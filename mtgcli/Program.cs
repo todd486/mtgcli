@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
 
 namespace mtgcli {
-    public class Card {
-
+    public partial class Card {
         public enum Color { W, U, B, R, G }
         public enum CardType { Land, Creature, Artifact, Enchantment, Instant, Sorcery }
         enum KeywordAbilities {
@@ -26,6 +26,7 @@ namespace mtgcli {
             Vigilance,
         }
 
+        public int setID;
         public string name;
         public string cost;
         public Color[] colorIdentity;
@@ -34,64 +35,22 @@ namespace mtgcli {
         public string rulesText;
         public (int power, int toughness) powerToughness;
 
-        public Card() { }
-
-
-
         public override string ToString() {
-            return $"{name}, {string.Join("\n", colorIdentity)}, {string.Join("\n", types)}, {string.Join("\n", subtypes)}, {rulesText}";
+            return $"{name}, {cost}, Identity: {string.Join("\n", colorIdentity)}\n{string.Join(" ", types)}, {string.Join("\n", subtypes)}, {rulesText}";
         }
     }
 
-    public class Permanent : Card {
-        public Dictionary<string, Action> staticAbilities = new Dictionary<string, Action>();;
-        //Since spells cannot have static abilities only permanents need this.
-
-        public void StaticEvaluate(ref string rulesText) {
-            string[] staticTriggers = { "When, Whenever" };
-            string[] triggerConditions = { "enters the battlefield", "leaves the battlefield" };
-            
-        }
-
-        public Permanent(string name, string cost, Color[] colorIdentity, CardType[] types, string[] subtypes, string rulesText) {
-            //Artifact, Enchantment, Land
-            this.name = name;
-            this.cost = cost;
-            this.colorIdentity = colorIdentity;
-            this.types = types;
-            this.subtypes = subtypes;
-            this.rulesText = rulesText;
-
-            StaticEvaluate(ref rulesText);
-        }
-        public Permanent(string name, string cost, Color[] colorIdentity, CardType[] types, string[] subtypes, string rulesText, (int power, int toughness) powerToughness) {
-            //Creature
-            this.name = name;
-            this.cost = cost;
-            this.colorIdentity = colorIdentity;
-            this.types = types;
-            this.subtypes = subtypes;
-            this.rulesText = rulesText;
-            this.powerToughness = powerToughness;
-
-            StaticEvaluate(ref rulesText);
-        }
+    public partial class Permanent : Card {
+        public Dictionary<string, Action> triggeredAbilities;
+        public List<Action> staticAbilities;
     }
 
-    public class Spell : Card {
+    public partial class Spell : Card {
         public List<Action> abilities = new List<Action>();
-        public Spell(string name, string cost, Color[] colorIdentity, CardType[] types, string rulesText) {
-            //Instant, Sorcery
-            this.name = name;
-            this.cost = cost;
-            this.colorIdentity = colorIdentity;
-            this.types = types;
-            this.rulesText = rulesText;
-        }
     }
 
     public class Player {
-        class Deck {
+        private class Deck {
             private List<Card> deck;
 
             public Card DrawCard() {
@@ -128,19 +87,26 @@ namespace mtgcli {
         public List<Card> discard = new List<Card>();
         public List<Card> exile = new List<Card>();
 
+        public Battlefield battlefield = new Battlefield();
+
         public Player(List<Card> deck) {
             lifeTotal = startingLifeTotal;
             this.deck = new Deck(deck);
         }
+
+
     }
 
     public class Stack {
         //The stack is responsible for the order of execution of spells in the game, where the Card on the top of the stack is executed first.
         public List<Card> stack = new List<Card>();
 
-        void Resolve() {
+        public void Resolve() {
             Card top = stack[stack.Count - 1];
 
+
+        }
+        public void PushAbilityToStack() {
 
         }
         public void PushToStack(ref Player player, Card card) {
@@ -156,43 +122,90 @@ namespace mtgcli {
         }
     }
 
+    public class Events {
+        #region untap, upkeep, draw
+
+        public event Action OnUntap;
+        public void Untap() => OnUntap?.Invoke();
+
+        public event Action OnUpkeep;
+        public void Upkeep() => OnUpkeep?.Invoke();
+
+        public event Action OnDraw;
+        public void Draw() => OnDraw?.Invoke();
+
+        #endregion
+
+        public event Action OnCreatureDeath;
+        public void CreatureDeath() => OnCreatureDeath?.Invoke();
+
+        public event Action OnCombatDamage;
+        public void CombatDamage() => OnCombatDamage?.Invoke();
+
+        #region etb, ltb
+
+        public event Action OnEnterTheBattlefield;
+        public void EnterTheBattlefield() => OnEnterTheBattlefield?.Invoke();
+
+        public event Action OnLeaveTheBattlefield;
+        public void LeaveTheBattlefield() => OnLeaveTheBattlefield?.Invoke();
+
+        #endregion
+    }
+
+    public class Battlefield {
+        public List<Permanent> permanents { get; private set; } = new List<Permanent>();
+
+        public void PushPermanent(Permanent p) {
+            permanents.Add(p); //Add the permanent to the list
+            Console.WriteLine(p);
+            p.triggeredAbilities["Whenever"]?.Invoke(); //Subscribe all "whenever"-labelled triggered abilities
+
+        }
+
+    }
+
     class Program {
         static void Main(string[] args) {
+            Battlefield bf = new Battlefield();
+            Events eventHandler = new Events();
 
+            List<Card> cardSet = new List<Card> {
+                new Permanent() { //how did I not know I could do initializer lists like this...
+                    setID = 2,
+                    name = "Angel of Destiny",
+                    cost = "{3}{W}{W}",
+                    colorIdentity = new Card.Color[]{ Card.Color.W },
+                    types = new Card.CardType[]{ Card.CardType.Creature },
+                    subtypes = new string[]{ "Angel", "Cleric" },
+                    rulesText = "Flying, double strike\nWhenever a creature you control deals combat damage to a player, you and that player each gain that much life.\nAt the beginning of your end step, if you have at least 15 life more than your starting life total, each player Angel of Destiny attacked this turn loses the game.",
+                    powerToughness = (2, 3),
+                    triggeredAbilities = new Dictionary<string, Action> {
+                        { "Whenever", () => {
+                            //KeyValuePair of "Whenever" subscribes a lambda function to OnCombatDamage
+                            eventHandler.OnCombatDamage += () => {
+                                //do stuff when event is invoked
+                                Console.WriteLine("testing");
+                            };
+                        } }
+                    }
+                }
+            };
 
-            Player player1 = new Player(new List<Card> {
-                new Spell(
-                    "test card",
-                    "{R}, {R}",
-                    new Card.Color[]{ Card.Color.R },
-                    new Card.CardType[]{ Card.CardType.Instant },
-                    ""
-                ),
-                new Card(
-                    "test card 2",
-                    "{R}, {R}",
-                    new Card.Color[]{ Card.Color.R },
-                    new Card.CardType[]{ Card.CardType.Creature },
-                    new string[]{ "Goblin" },
-                    "Flying, double strike\nWhenever a creature you control deals combat damage to a player, you and that player each gain that much life.\nAt the beginning of your end step, if you have at least 15 life more than your starting life total, each player Angel of Destiny attacked this turn loses the game.",
-                    (2, 3)
-                )
-            }),
-                   player2 = new Player(new List<Card> {
-                new Card(
-                    "test card 3",
-                    "{R}, {R}",
-                    new Card.Color[]{ Card.Color.R },
-                    new Card.CardType[]{ Card.CardType.Instant },
-                    "Sample text 3"
-                )
-            });
+            bf.PushPermanent((Permanent)cardSet[0]);
 
-            Stack stack = new Stack();
+            //Player player1 = new Player(new List<Card> {
 
-            List<Card> battlefield = new List<Card>();
+            //}),
+            //       player2 = new Player(new List<Card> {
 
+            //});
 
+            //Stack stack = new Stack();
+
+            eventHandler.CombatDamage();
+
+            #region gamelogic
 
             //bool ended = false;
             //bool keepingPriority = true;
@@ -246,11 +259,11 @@ namespace mtgcli {
 
             //}
 
-            void PlayerCast(ref Player player, int index) {
-                stack.PushToStack(ref player, player.hand[index]);
-                player.hand.RemoveAt(index);
-            }
-
+            //void PlayerCast(ref Player player, int index) {
+            //    stack.PushToStack(ref player, player.hand[index]);
+            //    player.hand.RemoveAt(index);
+            //}
+            #endregion
         }
     }
 }
