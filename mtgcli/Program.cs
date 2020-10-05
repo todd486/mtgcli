@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace mtgcli {
     public class Card {
@@ -87,6 +88,10 @@ namespace mtgcli {
 
                 Events.EnterTheBattlefield();
             }
+
+            public void RemovePermanent(int index) {
+                Events.LeaveTheBattlefield();
+            }
         }
 
         static readonly int startingLifeTotal = 20;
@@ -112,8 +117,6 @@ namespace mtgcli {
         //The stack is responsible for the order of execution of spells in the game, where the Card on the top of the stack is executed first.
         public List<Card> stack { get; private set; } = new List<Card>();
 
-
-
         public void PassPriority() {
 
         }
@@ -137,7 +140,7 @@ namespace mtgcli {
 
         }
 
-        //Special abilities like playing lands; do not use the stack.
+        //NOTE: Special abilities like playing lands; do not use the stack.
         public void PushToStack(ref Player player, Card card) {
             Console.WriteLine($"Casting card: {card}");
             stack.Add(card);
@@ -153,6 +156,7 @@ namespace mtgcli {
 
     public class Events {
         #region Beginning Phase
+
         public static event Action OnUntap;
         public static void Untap() => OnUntap?.Invoke();
 
@@ -161,12 +165,33 @@ namespace mtgcli {
 
         public static event Action OnDraw;
         public static void Draw() => OnDraw?.Invoke();
+
         #endregion
 
+        public static event Action OnPreCombatMain;
+        public static void PreCombatMain() => OnPreCombatMain?.Invoke();
+
         #region Combat Phase 
+
+        public static event Action OnBeginCombat;
+        public static void BeginCombat() => OnBeginCombat?.Invoke();
+
+        public static event Action OnDeclareAttackers;
+        public static void DeclareAttackers() => OnDeclareAttackers?.Invoke();
+
+        public static event Action OnDeclareBlockers;
+        public static void DeclareBlockers() => OnDeclareBlockers?.Invoke();
+
         public static event Action OnCombatDamage;
         public static void CombatDamage() => OnCombatDamage?.Invoke();
+
+        public static event Action OnEndCombat;
+        public static void EndCombat() => OnEndCombat?.Invoke();
+
         #endregion
+
+        public static event Action OnPostCombatMain;
+        public static void PostCombatMain() => OnPostCombatMain?.Invoke();
 
         #region End Phase
 
@@ -178,8 +203,12 @@ namespace mtgcli {
 
         #endregion
 
+        #region Generic Events
+
         public static event Action OnCreatureDeath;
         public static void CreatureDeath() => OnCreatureDeath?.Invoke();
+
+        #endregion
 
         #region etb, ltb
 
@@ -190,19 +219,19 @@ namespace mtgcli {
         public static void LeaveTheBattlefield() => OnLeaveTheBattlefield?.Invoke();
 
         #endregion
+
+        public static event Action OnPriorityCheck;
+        public static void PriorityCheck() => OnPriorityCheck?.Invoke();
     }
 
-
-
     class Program {
+        class Phase {
+
+        }
         static void Main(string[] args) {
 
-            Player player1 = new Player(new List<Card> {
-
-            }),
-                   player2 = new Player(new List<Card> {
-
-                   });
+            #region cardtesting
+            
 
             Stack stack = new Stack();
 
@@ -222,100 +251,98 @@ namespace mtgcli {
             };
 
             //personalized card
-            Permanent x = (Permanent)cardSet[0];
-            x.triggeredAbilities = new Dictionary<string, Action> {
-                        { "Auto", () => {
-                            //Listen to untap signal
-                            Events.OnUntap += () => {
-                                x.isTapped = false;
-                            };
-                            //KeyValuePair of "Whenever" subscribes a lambda function to OnCombatDamage
-                            Events.OnCombatDamage += () => {
-                                //do stuff when event is invoked
-                                Console.WriteLine(player1.lifeTotal); //TODO: get player who controls the permanent
-                            };
-                        } }
-                    };
-            x.owner = player1;
-            x.controller = player1;
-            x.isTapped = true;
+            //Permanent x = (Permanent)cardSet[0];
+            //x.triggeredAbilities = new Dictionary<string, Action> {
+            //            { "Auto", () => {
+            //                //Listen to untap signal
+            //                Events.OnUntap += () => {
+            //                    x.isTapped = false;
+            //                };
+            //                //KeyValuePair of "Whenever" subscribes a lambda function to OnCombatDamage
+            //                Events.OnCombatDamage += () => {
+            //                    //do stuff when event is invoked
+            //                    Console.WriteLine(player1.lifeTotal); //TODO: get player who controls the permanent
+            //                };
+            //            } }
+            //        };
+            //x.owner = player1;
+            //x.controller = player1;
+            //x.isTapped = true;
+
+            #endregion
 
             //Game Logic
 
             int turn = 0;
-            int currentPriority;
+            bool holdPriority = true;
+            int currentPriority = 0;
             bool ended = false;
-            bool holdPriority;
 
+            int playerTurn = 0;
             Player currentPlayer;
-            List<Player> players;
+            List<Player> players = new List<Player> { new Player(new List<Card> {}), new Player(new List<Card> {}) };
 
-            Events.Untap();
-
-            player1.battlefield.PushPermanent(x);
-
-            while (!ended)
-
-
-            #region gamelogic
-
-            //bool ended = false;
-            //bool keepingPriority = true;
-            //int priorityCount = 0;
-            //int turnCount = 0;
-
+            //players[0].battlefield.PushPermanent(x);
             //Thread controlThread = new Thread(() => Controls()); controlThread.Start();
 
-            //while (!ended) {
-            //    //Game logic
+            Events.OnPriorityCheck += () => {
+                if (holdPriority) {
 
-            //    if (turnCount % 2 == 0) {
-            //        //Player 1's turn
-            //        Console.WriteLine($"Turn: {turnCount} | Player 1's turn!");
-            //        while (keepingPriority) {
-            //            if (priorityCount % 2 == 0) {
-            //                //Player 1 has priority
-            //                Console.WriteLine("Player 1 has priority");
-            //                if (!booleanQuestion()) { break; }
-            //            }
-            //            else {
-            //                //Player 2 has priority
-            //                Console.WriteLine("Player 2 has priority");
-            //                if (!booleanQuestion()) { break; }
-            //            }
-            //            priorityCount++;
-            //        }
-            //        priorityCount = 0;
+                    //Whoever held priority has priority
+                    currentPriority = playerTurn;
 
-            //    }
-            //    else {
-            //        //Player 2's turn
-            //        Console.WriteLine($"Turn: {turnCount} | Player 2's turn!");
-            //        while (keepingPriority) {
-            //            if (priorityCount % 2 == 0) {
-            //                //Player 2 has priority
-            //                Console.WriteLine("Player 2 has priority");
-            //                if (!booleanQuestion()) { break; }
-            //            }
-            //            else {
-            //                //Player 1 has priority
-            //                Console.WriteLine("Player 1 has priority");
-            //                if (!booleanQuestion()) { break; }
-            //            }
-            //            priorityCount++;
-            //        }
-            //        priorityCount = 0;
-            //    }
+                    while (holdPriority) {
+                        int priorityIndex = currentPriority % players.Count;
 
-            //    turnCount++;
+                        
 
+                        //currentPlayer = players[priorityIndex];
+
+                        Console.WriteLine($"Player {priorityIndex} has priority");
+
+                        currentPriority++;
+
+                        Console.ReadLine();
+
+                        
+                    }
+
+                }
+            };
+
+            //Main game loop
+            while (!ended) {
+                playerTurn = turn % players.Count;
+
+                Console.WriteLine($"Turn: {turn}");
+                Events.PriorityCheck();
+
+
+                Console.ReadLine();
+                turn++;
+            }
+
+
+            //void TurnStructure() {
+            //    Events.Untap();
+            //    Events.Upkeep();
+            //    Events.Draw();
+
+            //    Events.PreCombatMain();
+
+            //    Events.BeginCombat();
+            //    Events.DeclareAttackers();
+            //    Events.DeclareBlockers();
+            //    Events.CombatDamage();
+            //    Events.EndCombat();
+
+            //    Events.PostCombatMain();
+
+            //    Events.EndStep();
+            //    Events.Cleanup();
             //}
 
-            //void PlayerCast(ref Player player, int index) {
-            //    stack.PushToStack(ref player, player.hand[index]);
-            //    player.hand.RemoveAt(index);
-            //}
-            #endregion
+
         }
     }
 }
