@@ -36,7 +36,7 @@ namespace mtgcli {
         public (int power, int toughness) powerToughness;
 
         public override string ToString() {
-            return $"{name}, {cost}, Identity: {string.Join("\n", colorIdentity)}\n{string.Join(" ", types)}, {string.Join("\n", subtypes)}, {rulesText}";
+            return $"{name}, {cost}, Identity: {string.Join("\n", colorIdentity)}\n{string.Join(" ", types)}, {string.Join(" ", subtypes)}, {rulesText}";
         }
     }
 
@@ -45,6 +45,10 @@ namespace mtgcli {
         public List<Action> staticAbilities;
         public bool isTapped;
         public bool summoningSick;
+
+        public override string ToString() {
+            return $"{name}, {cost}, {string.Join(" ", types)}, {string.Join(" ", subtypes)}\nTapped: {isTapped}, Summoning sick: {summoningSick}";
+        }
     }
 
     public class Spell : Card {
@@ -52,8 +56,13 @@ namespace mtgcli {
     }
 
     public class Player {
-        private class Deck {
+        public class Deck {
             private List<Card> deck;
+
+            public Card this[int index] {
+                get => deck[index];
+                private set => deck[index] = value;
+            }
 
             public Card DrawCard() {
                 Card top = deck[deck.Count - 1];
@@ -92,12 +101,20 @@ namespace mtgcli {
             public void RemovePermanent(int index) {
                 Events.LeaveTheBattlefield();
             }
+
+            public override string ToString() {
+                string x = "";
+                foreach (Card p in permanents) {
+                    x += p.ToString();
+                }
+                return x;
+            }
         }
 
         static readonly int startingLifeTotal = 20;
         public int lifeTotal;
 
-        private Deck deck;
+        public Deck deck;
 
         public List<Card> hand = new List<Card>();
         public List<Card> discard = new List<Card>();
@@ -230,46 +247,12 @@ namespace mtgcli {
         }
         static void Main(string[] args) {
 
-            #region cardtesting
-            
+
 
             Stack stack = new Stack();
 
-            List<Card> cardSet = new List<Card> {
-                new Permanent() {
-                    setID = 2,
-                    name = "Angel of Destiny",
-                    cost = "{3}{W}{W}",
-                    colorIdentity = new Card.Color[]{ Card.Color.W },
-                    types = new Card.CardType[]{ Card.CardType.Creature },
-                    subtypes = new string[]{ "Angel", "Cleric" },
-                    rulesText = "Flying, double strike\nWhenever a creature you control deals combat damage to a player, you and that player each gain that much life.\nAt the beginning of your end step, if you have at least 15 life more than your starting life total, each player Angel of Destiny attacked this turn loses the game.",
-                    powerToughness = (2, 3),
-                    isTapped = false,
-                    summoningSick = true,
-                }
-            };
 
-            //personalized card
-            //Permanent x = (Permanent)cardSet[0];
-            //x.triggeredAbilities = new Dictionary<string, Action> {
-            //            { "Auto", () => {
-            //                //Listen to untap signal
-            //                Events.OnUntap += () => {
-            //                    x.isTapped = false;
-            //                };
-            //                //KeyValuePair of "Whenever" subscribes a lambda function to OnCombatDamage
-            //                Events.OnCombatDamage += () => {
-            //                    //do stuff when event is invoked
-            //                    Console.WriteLine(player1.lifeTotal); //TODO: get player who controls the permanent
-            //                };
-            //            } }
-            //        };
-            //x.owner = player1;
-            //x.controller = player1;
-            //x.isTapped = true;
 
-            #endregion
 
             //Game Logic
 
@@ -279,10 +262,58 @@ namespace mtgcli {
             bool ended = false;
 
             int playerTurn = 0;
-            Player currentPlayer;
-            List<Player> players = new List<Player> { new Player(new List<Card> {}), new Player(new List<Card> {}) };
 
-            //players[0].battlefield.PushPermanent(x);
+            List<Player> players = new List<Player> {
+                new Player(new List<Card> {
+                    new Permanent() {
+                    setID = 2,
+                    name = "Angel of Destiny",
+                    cost = "{3}{W}{W}",
+                    colorIdentity = new Card.Color[]{ Card.Color.W },
+                    types = new Card.CardType[]{ Card.CardType.Creature },
+                    subtypes = new string[]{ "Angel", "Cleric" },
+                    rulesText = "Flying, double strike\nWhenever a creature you control deals combat damage to a player, you and that player each gain that much life.\nAt the beginning of your end step, if you have at least 15 life more than your starting life total, each player Angel of Destiny attacked this turn loses the game.",
+                    powerToughness = (2, 3),
+                    isTapped = false,
+                    summoningSick = true },
+
+            }), new Player(new List<Card> {
+
+            }) };
+
+            Player currentPlayer = players[0];
+
+
+            //personalized card
+            Permanent x = (Permanent)players[0].deck[0];
+            x.triggeredAbilities = new Dictionary<string, Action> {
+                        { "Auto", () => {
+                            //Listen to untap signal
+                            Events.OnUntap += () => {
+                                if (x.controller == currentPlayer) {
+                                    x.isTapped = false;
+                                }
+                            };
+                            //KeyValuePair of "Whenever" subscribes a lambda function to OnCombatDamage
+                            Events.OnCombatDamage += () => {
+                                //do stuff when event is invoked
+                                Console.WriteLine("combat damage trigger"); //TODO: get player who controls the permanent
+                            };
+                        } }
+                    };
+            x.owner = players[0];
+            x.controller = players[0];
+            x.isTapped = true;
+            //I wish I could do this at creation time, but refering to this in a constructor is a no-no apparently...
+
+            //I don't see how I could store this in a more efficient manner, maybe something something delegate, abstract classes or interfaces
+            //would allow these types of shenanigans. 
+            //I could probably just have a seperate initialization method for each and every card, call that before it enters the battlefield and assigns it's event-listeners.
+
+
+
+
+
             //Thread controlThread = new Thread(() => Controls()); controlThread.Start();
 
             Events.OnPriorityCheck += () => {
@@ -294,7 +325,7 @@ namespace mtgcli {
                     while (holdPriority) {
                         int priorityIndex = currentPriority % players.Count;
 
-                        
+
 
                         //currentPlayer = players[priorityIndex];
 
@@ -304,22 +335,70 @@ namespace mtgcli {
 
                         Console.ReadLine();
 
-                        
+
                     }
 
                 }
+            };
+
+            Dictionary<string, Action> turnStructure = new Dictionary<string, Action> {
+                { "Untap", () => {
+                    Events.Untap();
+                } },
+                { "Upkeep", () => {
+                    Events.Upkeep();
+                } },
+                { "Draw", () => {
+                    Events.Draw();
+                    currentPlayer.hand.Add(currentPlayer.deck.DrawCard()); //Draw a card then add it to the player's hand
+                } },
+                { "PreCombatMain", () => {
+                    Events.PreCombatMain();
+
+                    Console.WriteLine("--------- Battlefield --------");
+                    Console.WriteLine($"{currentPlayer.battlefield}");
+
+                    Console.WriteLine("Choose a card from your hand to cast");
+                    foreach (Card x in currentPlayer.hand) {
+                        Console.WriteLine(x.ToString());
+                    }
+                    Console.ReadLine();
+                    currentPlayer.battlefield.PushPermanent((Permanent)currentPlayer.hand[0]);
+                    currentPlayer.hand.RemoveAt(0);
+                } }
             };
 
             //Main game loop
             while (!ended) {
                 playerTurn = turn % players.Count;
 
-                Console.WriteLine($"Turn: {turn}");
-                Events.PriorityCheck();
+                Console.Clear();
+                Console.WriteLine($"Turn: {turn}, player {playerTurn}'s turn");
+                Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~");
+
+
+                turnStructure["Untap"]();
+                turnStructure["Upkeep"]();
+                turnStructure["Draw"]();
+                turnStructure["PreCombatMain"]();
 
 
                 Console.ReadLine();
                 turn++;
+            }
+
+
+
+            void printData() {
+
+                foreach (Player p in players) {
+                    Console.WriteLine($"{p.lifeTotal} life");
+                    foreach (Card x in p.hand) {
+                        Console.WriteLine(x.ToString());
+                    }
+                    Console.WriteLine($"{p.battlefield}");
+                    Console.WriteLine("------------------------");
+                }
             }
 
 
