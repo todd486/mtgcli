@@ -25,17 +25,23 @@ public abstract class Card : MonoBehaviour {
     //    Trample,
     //    Vigilance,
     //}
+
     public GameObject controller;
     public GameObject owner;
+
     public int setID;
+
     public string cardName;
     public string cost;
-    public Color[] colorIdentity;
+    public string colorIdentity;
     public SuperTypes[] superTypes;
     public CardTypes[] types;
     public string[] subTypes;
+
     public string rulesText;
-    public (int power, int toughness) powerToughness;
+
+    public int power;
+    public int toughness;
 
     //This member stores all event delegates, this are used to keep track of all delegates which will eventually need to be unsubscribed from their corresponding events.
     //This prevents errant event-firing and memory leakage.

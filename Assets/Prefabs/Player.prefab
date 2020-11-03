@@ -109,6 +109,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTotal: 0
+  PermanentPrefab: {fileID: 23704520891316223, guid: 740044cc086282841adc1577c668738b, type: 3}
+  library: []
+  hand: []
+  graveyard: []
+  exile: []
+  battlefield: []
 --- !u!1 &5107350607942831440
 GameObject:
   m_ObjectHideFlags: 0
