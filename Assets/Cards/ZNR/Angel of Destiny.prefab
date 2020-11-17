@@ -8,9 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 23704520891316222}
+  - component: {fileID: 7535802151913701394}
   - component: {fileID: 5425552557558635217}
   - component: {fileID: 3358695699232693501}
+  - component: {fileID: 8973717270166861119}
   m_Layer: 0
   m_Name: Angel of Destiny
   m_TagString: Card
@@ -18,8 +19,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &23704520891316222
-Transform:
+--- !u!224 &7535802151913701394
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -32,6 +33,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 6.72, y: 9.36}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5425552557558635217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +67,14 @@ MonoBehaviour:
   tapped: 0
   shouldUntap: 1
   summoningSick: 1
-  script: {fileID: 0}
+  cantBeBlocked: 0
+  canBlock: 0
+  deathtouch: 0
+  defender: 0
+  flying: 0
+  mustAttack: 0
+  monoScript: {fileID: 11500000, guid: f5115eb5914cde54bbd3d86a98f5adbc, type: 3}
+  cardScript: {fileID: 0}
 --- !u!212 &3358695699232693501
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -113,3 +126,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8973717270166861119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23704520891316223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: 6.72
+  m_PreferredHeight: 9.36
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1

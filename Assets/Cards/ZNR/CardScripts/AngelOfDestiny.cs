@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class AngelOfDestiny : CardScript
 {
-    public override void Untap() {
+    public override void OnUpdate() {
+        
+    }
+    public override void OnUntap() {
         
     }
 }
