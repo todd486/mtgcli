@@ -63,6 +63,8 @@
     <Compile Include="Assets\Scripts\Permanent.cs" />
     <Compile Include="Assets\Scripts\Spell.cs" />
     <Compile Include="Assets\Scripts\EventHandler.cs" />
+    <Compile Include="Assets\Scripts\CardScript.cs" />
+    <Compile Include="Assets\Cards\ZNR\AngelOfDestiny.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+
 
 public abstract class Card : MonoBehaviour {
     public enum Color { W, U, B, R, G }
@@ -43,8 +45,10 @@ public abstract class Card : MonoBehaviour {
     public int power;
     public int toughness;
 
+    //public List<MonoScript> scripts;
+
     //This member stores all event delegates, this are used to keep track of all delegates which will eventually need to be unsubscribed from their corresponding events.
     //This prevents errant event-firing and memory leakage.
-    public Dictionary<string, Action> delegates = new Dictionary<string, Action>();
+    //public Dictionary<string, Action> delegates = new Dictionary<string, Action>();
 }
 

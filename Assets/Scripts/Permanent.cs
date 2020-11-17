@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,44 +22,14 @@ public class Permanent : Card {
     public bool shouldUntap;
     public bool summoningSick;
 
-    //private UnityEvent tapEvent = new UnityEvent();
-    private UnityEvent untapEvent = new UnityEvent();
+    public CardScript script;
 
-    // Start is called before the first frame update
-    void Start() {
-        untapEvent.AddListener(Untap);
-
+    private void Start() {
+        
     }
 
-    // Update is called once per frame
-    void Update() {
-        //untapEvent.Invoke();
-
-        //Applying this every single frame is super wasteful.
-        if (tapped) { //Rotate to indicate tapped state
-            gameObject.transform.eulerAngles = new Vector3(
-                gameObject.transform.eulerAngles.x,
-                gameObject.transform.eulerAngles.y,
-                -90
-            );
-        } else {
-            gameObject.transform.eulerAngles = new Vector3(
-                gameObject.transform.eulerAngles.x,
-                gameObject.transform.eulerAngles.y,
-                0
-            );
-        }
+    private void Update() {
+        
     }
-
-    private void OnDestroy() {
-        untapEvent.RemoveAllListeners(); //MIght be significantly slower than just doing it manually.
-    }
-
-    void Untap() {
-        if (tapped && shouldUntap) {
-            tapped = false;
-        }
-    }
-
 }
 

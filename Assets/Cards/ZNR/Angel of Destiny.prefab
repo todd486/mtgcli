@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 23704520891316222}
-  - component: {fileID: 2069581642204469960}
+  - component: {fileID: 5425552557558635217}
   - component: {fileID: 3358695699232693501}
   m_Layer: 0
   m_Name: Angel of Destiny
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2069581642204469960
+--- !u!114 &5425552557558635217
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,18 +55,13 @@ MonoBehaviour:
   subTypes:
   - Angel
   - Cleric
-  rulesText: Flying, double strike  Whenever a creature you control deals combat
-    damage to a player, you and that player each gain that much life.  At the beginning
-    of your end step, if you have at least 15 life more than your starting life total,
-    each player Angel of Destiny attacked this turn loses the game.
+  rulesText: 
   power: 2
   toughness: 6
   tapped: 0
   shouldUntap: 1
   summoningSick: 1
-  tapEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  script: {fileID: 0}
 --- !u!212 &3358695699232693501
 SpriteRenderer:
   m_ObjectHideFlags: 0
