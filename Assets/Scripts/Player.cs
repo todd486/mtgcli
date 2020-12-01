@@ -5,16 +5,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public static readonly int startingLifeTotal = 20;
+    public int startingLifeTotal = 20;
     public int lifeTotal;
 
     //public List<Card> deck = new List<Card>();
 
-    public Library library;
+    public GameObject library;
     public List<Card> hand = new List<Card>();
     public List<Card> graveyard = new List<Card>();
     public List<Card> exile = new List<Card>();
-    public Battlefield battlefield;
+    public GameObject battlefield;
 
     // Start is called before the first frame update
     void Start() {

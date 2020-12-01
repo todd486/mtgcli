@@ -18,7 +18,7 @@ public class Battlefield : MonoBehaviour
         
     }
 
-    public void Create(GameObject card) {
+    public void CreateCard(GameObject card) {
         GameObject newCard = Instantiate(card);
         newCard.transform.parent = gameObject.transform;
     }

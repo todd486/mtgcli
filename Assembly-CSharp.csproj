@@ -55,18 +55,18 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Battlefield.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Card.cs" />
     <Compile Include="Assets\Scripts\GameLogic.cs" />
+    <Compile Include="Assets\Scripts\Hand.cs" />
     <Compile Include="Assets\Cards\ZNR\CardScripts\AngelOfDestiny.cs" />
     <Compile Include="Assets\Scripts\CardScript.cs" />
     <Compile Include="Assets\Scripts\StackHandler.cs" />
     <Compile Include="Assets\Scripts\Permanent.cs" />
     <Compile Include="Assets\Scripts\Spell.cs" />
-    <Compile Include="Assets\Scripts\EventHandler.cs" />
-    <Compile Include="Assets\Scripts\Battlefield.cs" />
-    <Compile Include="Assets\Scripts\Hand.cs" />
     <Compile Include="Assets\Scripts\Library.cs" />
+    <Compile Include="Assets\Scripts\EventHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

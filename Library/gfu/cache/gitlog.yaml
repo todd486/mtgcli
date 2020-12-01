@@ -13,9 +13,611 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 3
-  lastUpdatedAtString: 2020-11-17T14:30:19.702+01:00
-  initializedAtString: 2020-11-17T13:29:07.516+01:00
+  lastUpdatedAtString: 2020-11-19T13:05:29.202+01:00
+  initializedAtString: 2020-11-19T12:06:37.698+01:00
   log:
+  - commitID: d220c6ce5862d2cb6680ac99337e2707409aa316
+    mergeA: 
+    mergeB: 
+    authorName: todd486
+    authorEmail: 58509177+todd486@users.noreply.github.com
+    commitEmail: 58509177+todd486@users.noreply.github.com
+    commitName: todd486
+    summary: added ui structure and reworking player data structure
+    description: 
+    timeString: 2020-11-17T14:46:31.000+01:00
+    commitTimeString: 2020-11-17T14:46:31.000+01:00
+    changes:
+    - path: .gitignore
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\.gitignore
+      projectPath: .gitignore
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assembly-CSharp.csproj
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assembly-CSharp.csproj
+      projectPath: Assembly-CSharp.csproj
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Cards.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Cards.meta
+      projectPath: Assets\Cards.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Cards\ZNR.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Cards\ZNR.meta
+      projectPath: Assets\Cards\ZNR.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Cards\ZNR\Angel of Destiny.prefab
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Cards\ZNR\Angel
+        of Destiny.prefab
+      projectPath: Assets\Cards\ZNR\Angel of Destiny.prefab
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Cards\ZNR\Angel of Destiny.prefab.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Cards\ZNR\Angel
+        of Destiny.prefab.meta
+      projectPath: Assets\Cards\ZNR\Angel of Destiny.prefab.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Cards\ZNR\Art.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Cards\ZNR\Art.meta
+      projectPath: Assets\Cards\ZNR\Art.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Cards\ZNR\Art\znr-2-angel-of-destiny.jpg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Cards\ZNR\Art\znr-2-angel-of-destiny.jpg.meta
+      projectPath: Assets\Cards\ZNR\Art\znr-2-angel-of-destiny.jpg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Cards\ZNR\BasePermanent.prefab
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Cards\ZNR\BasePermanent.prefab
+      projectPath: Assets\Cards\ZNR\BasePermanent.prefab
+      originalPath: Assets\Cards\ZNR\Permanent.prefab
+      indexStatus: 6
+      workTreeStatus: 0
+    - path: Assets\Cards\ZNR\BasePermanent.prefab.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Cards\ZNR\BasePermanent.prefab.meta
+      projectPath: Assets\Cards\ZNR\BasePermanent.prefab.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Cards\ZNR\CardScripts.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Cards\ZNR\CardScripts.meta
+      projectPath: Assets\Cards\ZNR\CardScripts.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Cards\ZNR\CardScripts\AngelOfDestiny.cs
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Cards\ZNR\CardScripts\AngelOfDestiny.cs
+      projectPath: Assets\Cards\ZNR\CardScripts\AngelOfDestiny.cs
+      originalPath: Assets\Cards\ZNR\AngelOfDestiny.cs
+      indexStatus: 6
+      workTreeStatus: 0
+    - path: Assets\Cards\ZNR\CardScripts\AngelOfDestiny.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Cards\ZNR\CardScripts\AngelOfDestiny.cs.meta
+      projectPath: Assets\Cards\ZNR\CardScripts\AngelOfDestiny.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Cards\cardback.jpg
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Cards\cardback.jpg
+      projectPath: Assets\Cards\cardback.jpg
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Cards\cardback.jpg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Cards\cardback.jpg.meta
+      projectPath: Assets\Cards\cardback.jpg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Decks.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Decks.meta
+      projectPath: Assets\Decks.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons.meta
+      projectPath: Assets\Icons.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\0.svg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\0.svg.meta
+      projectPath: Assets\Icons\0.svg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\1.svg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\1.svg.meta
+      projectPath: Assets\Icons\1.svg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\2.svg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\2.svg.meta
+      projectPath: Assets\Icons\2.svg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\3.svg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\3.svg.meta
+      projectPath: Assets\Icons\3.svg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\4.svg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\4.svg.meta
+      projectPath: Assets\Icons\4.svg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\5.svg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\5.svg.meta
+      projectPath: Assets\Icons\5.svg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\859t6qnrtwt51.png.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\859t6qnrtwt51.png.meta
+      projectPath: Assets\Icons\859t6qnrtwt51.png.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\B.svg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\B.svg.meta
+      projectPath: Assets\Icons\B.svg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\G.svg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\G.svg.meta
+      projectPath: Assets\Icons\G.svg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\R.svg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\R.svg.meta
+      projectPath: Assets\Icons\R.svg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\T.svg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\T.svg.meta
+      projectPath: Assets\Icons\T.svg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\U.svg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\U.svg.meta
+      projectPath: Assets\Icons\U.svg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\W.svg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\W.svg.meta
+      projectPath: Assets\Icons\W.svg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Icons\X.svg.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Icons\X.svg.meta
+      projectPath: Assets\Icons\X.svg.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins.meta
+      projectPath: Assets\Plugins.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub.meta
+      projectPath: Assets\Plugins\GitHub.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor.meta
+      projectPath: Assets\Plugins\GitHub\Editor.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\AsyncBridge.Net35.dll.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\ExtensionLoader.cs.meta
+      projectPath: Assets\Plugins\GitHub\Editor\ExtensionLoader.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.45.dll.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Api.dll.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Logging.dll.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.45.dll.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.Unity.dll.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\GitHub.UnityShim.dll.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\Mono.Posix.dll.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
+      projectPath: Assets\Plugins\GitHub\Editor\QuickGuide.pdf.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\ReadOnlyCollectionsInterfaces.dll.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\System.Threading.dll.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs.meta
+      projectPath: Assets\Plugins\GitHub\Editor\UnityAPIWrapper.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
+      projectPath: Assets\Plugins\GitHub\Editor\big-logo@2x.png.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\credits.txt.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\credits.txt.meta
+      projectPath: Assets\Plugins\GitHub\Editor\credits.txt.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\eula.txt.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\eula.txt.meta
+      projectPath: Assets\Plugins\GitHub\Editor\eula.txt.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
+      projectPath: Assets\Plugins\GitHub\Editor\libsfw.bundle.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\libsfw.so.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\libsfw.so.meta
+      projectPath: Assets\Plugins\GitHub\Editor\libsfw.so.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
+      projectPath: Assets\Plugins\GitHub\Editor\sfw.net.dll.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\x64.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\x64.meta
+      projectPath: Assets\Plugins\GitHub\Editor\x64.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Plugins\GitHub\Editor\x86.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Plugins\GitHub\Editor\x86.meta
+      projectPath: Assets\Plugins\GitHub\Editor\x86.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Prefabs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Prefabs.meta
+      projectPath: Assets\Prefabs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Prefabs\Player.prefab
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Prefabs\Player.prefab
+      projectPath: Assets\Prefabs\Player.prefab
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Prefabs\Player.prefab.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Prefabs\Player.prefab.meta
+      projectPath: Assets\Prefabs\Player.prefab.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Prefabs\Spell.prefab.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Prefabs\Spell.prefab.meta
+      projectPath: Assets\Prefabs\Spell.prefab.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scenes.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scenes.meta
+      projectPath: Assets\Scenes.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scenes\SampleScene.unity
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scenes\SampleScene.unity
+      projectPath: Assets\Scenes\SampleScene.unity
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scenes\SampleScene.unity.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scenes\SampleScene.unity.meta
+      projectPath: Assets\Scenes\SampleScene.unity.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts.meta
+      projectPath: Assets\Scripts.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Battlefield.cs
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\Battlefield.cs
+      projectPath: Assets\Scripts\Battlefield.cs
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Battlefield.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\Battlefield.cs.meta
+      projectPath: Assets\Scripts\Battlefield.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Card.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\Card.cs.meta
+      projectPath: Assets\Scripts\Card.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\CardScript.cs
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\CardScript.cs
+      projectPath: Assets\Scripts\CardScript.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\CardScript.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\CardScript.cs.meta
+      projectPath: Assets\Scripts\CardScript.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\EventHandler.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\EventHandler.cs.meta
+      projectPath: Assets\Scripts\EventHandler.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\GameLogic.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\GameLogic.cs.meta
+      projectPath: Assets\Scripts\GameLogic.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Hand.cs
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\Hand.cs
+      projectPath: Assets\Scripts\Hand.cs
+      originalPath: Assets\Scripts\testingCreation.cs
+      indexStatus: 6
+      workTreeStatus: 0
+    - path: Assets\Scripts\Hand.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\Hand.cs.meta
+      projectPath: Assets\Scripts\Hand.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Library.cs
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\Library.cs
+      projectPath: Assets\Scripts\Library.cs
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Library.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\Library.cs.meta
+      projectPath: Assets\Scripts\Library.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Permanent.cs
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\Permanent.cs
+      projectPath: Assets\Scripts\Permanent.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Permanent.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\Permanent.cs.meta
+      projectPath: Assets\Scripts\Permanent.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Player.cs
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\Player.cs
+      projectPath: Assets\Scripts\Player.cs
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Assets\Scripts\Player.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\Player.cs.meta
+      projectPath: Assets\Scripts\Player.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\Spell.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\Spell.cs.meta
+      projectPath: Assets\Scripts\Spell.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Assets\Scripts\StackHandler.cs.meta
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Assets\Scripts\StackHandler.cs.meta
+      projectPath: Assets\Scripts\StackHandler.cs.meta
+      originalPath: 
+      indexStatus: 4
+      workTreeStatus: 0
+    - path: Library\ArtifactDB
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\ArtifactDB
+      projectPath: Library\ArtifactDB
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\InspectorExpandedItems.asset
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\InspectorExpandedItems.asset
+      projectPath: Library\InspectorExpandedItems.asset
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\SceneVisibilityState.asset
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\SceneVisibilityState.asset
+      projectPath: Library\SceneVisibilityState.asset
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\ScriptAssemblies\Assembly-CSharp.dll
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\ScriptAssemblies\Assembly-CSharp.dll
+      projectPath: Library\ScriptAssemblies\Assembly-CSharp.dll
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\ShaderCache\EditorEncounteredVariants
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\ShaderCache\EditorEncounteredVariants
+      projectPath: Library\ShaderCache\EditorEncounteredVariants
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\SourceAssetDB
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\SourceAssetDB
+      projectPath: Library\SourceAssetDB
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\StateCache\MainStageHierarchy\4d\4d2a36d9faf65734f0bbefb3ee623532.json
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\StateCache\MainStageHierarchy\4d\4d2a36d9faf65734f0bbefb3ee623532.json
+      projectPath: Library\StateCache\MainStageHierarchy\4d\4d2a36d9faf65734f0bbefb3ee623532.json
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\StateCache\PrefabStageHierarchy\90\90ca6838259518b142c3e3fef0a2da66.json
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\StateCache\PrefabStageHierarchy\90\90ca6838259518b142c3e3fef0a2da66.json
+      projectPath: Library\StateCache\PrefabStageHierarchy\90\90ca6838259518b142c3e3fef0a2da66.json
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\StateCache\PrefabStageHierarchy\9c\9c4b5cd5314bca886e63d3d506123bd3.json
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\StateCache\PrefabStageHierarchy\9c\9c4b5cd5314bca886e63d3d506123bd3.json
+      projectPath: Library\StateCache\PrefabStageHierarchy\9c\9c4b5cd5314bca886e63d3d506123bd3.json
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\StateCache\PrefabStageHierarchy\a1\a13b55bc56547c8d86519373b5f022e1.json
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\StateCache\PrefabStageHierarchy\a1\a13b55bc56547c8d86519373b5f022e1.json
+      projectPath: Library\StateCache\PrefabStageHierarchy\a1\a13b55bc56547c8d86519373b5f022e1.json
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\StateCache\SceneView\38\382996672f5a86cddf66dd468e7d9351.json
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\StateCache\SceneView\38\382996672f5a86cddf66dd468e7d9351.json
+      projectPath: Library\StateCache\SceneView\38\382996672f5a86cddf66dd468e7d9351.json
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\StateCache\SceneView\8c\8cd7c613bf844de3b80696e27a479d5e.json
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\StateCache\SceneView\8c\8cd7c613bf844de3b80696e27a479d5e.json
+      projectPath: Library\StateCache\SceneView\8c\8cd7c613bf844de3b80696e27a479d5e.json
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\gfu\cache\branches.yaml
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\gfu\cache\branches.yaml
+      projectPath: Library\gfu\cache\branches.yaml
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\gfu\cache\gitlocks.yaml
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\gfu\cache\gitlocks.yaml
+      projectPath: Library\gfu\cache\gitlocks.yaml
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\gfu\cache\gitlog.yaml
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\gfu\cache\gitlog.yaml
+      projectPath: Library\gfu\cache\gitlog.yaml
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\gfu\cache\gitstatusentries.yaml
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\gfu\cache\gitstatusentries.yaml
+      projectPath: Library\gfu\cache\gitstatusentries.yaml
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\gfu\cache\gittrackingstatus.yaml
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\gfu\cache\gittrackingstatus.yaml
+      projectPath: Library\gfu\cache\gittrackingstatus.yaml
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
+    - path: Library\gfu\cache\repoinfo.yaml
+      fullPath: C:\Users\filip.svahn\Documents\Unity\openmtg\Library\gfu\cache\repoinfo.yaml
+      projectPath: Library\gfu\cache\repoinfo.yaml
+      originalPath: 
+      indexStatus: 3
+      workTreeStatus: 0
   - commitID: 4a9fa654757be5218375bfee42b1420738df381f
     mergeA: 
     mergeB: 

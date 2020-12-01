@@ -11,23 +11,6 @@ public abstract class Card : MonoBehaviour {
     public enum CardTypes { Land, Creature, Artifact, Enchantment, Instant, Sorcery }
     //public enum Ratity { Common, Uncommon, Rare, Mythic_Rare }
 
-    //public enum KeywordAbilities {
-    //    Deathtouch,
-    //    Defender,
-    //    Double_strike,
-    //    First_strike,
-    //    Flying,
-    //    Haste,
-    //    Hexproof,
-    //    Indestructible,
-    //    Lifelink,
-    //    Menace,
-    //    Protection,
-    //    Reach,
-    //    Trample,
-    //    Vigilance,
-    //}
-
     public GameObject controller;
     public GameObject owner;
 
@@ -42,13 +25,6 @@ public abstract class Card : MonoBehaviour {
 
     public string rulesText;
 
-    public int power;
-    public int toughness;
 
-    //public List<MonoScript> scripts;
-
-    //This member stores all event delegates, this are used to keep track of all delegates which will eventually need to be unsubscribed from their corresponding events.
-    //This prevents errant event-firing and memory leakage.
-    //public Dictionary<string, Action> delegates = new Dictionary<string, Action>();
 }
 
